@@ -40,16 +40,16 @@ int main()
             if (key > 0)
                 key = key - 26;
             for (int index = 0; index < length; index++)
-                {
+            {
                     message[index] = encryption[index];
                     if (message[index] > 96 && message[index] < 123)
                         message[index] = message[index] - 32;
                     if (message[index] > 64 && message[index] < 91)
-                        {
+                    {
                             message[index] = message[index] - 65;
                             message[index] = (message[index] - key) % 26 + 65;
-                        }
-                }
+                    }
+            }
                 printf("%s\n", message);
         }
         case 3:
@@ -61,21 +61,19 @@ int main()
                 length++;
             char encryption[length];
             for(int index = 0; index < length; index++)
-                {
+            {
                     encryption[index] = message[index];
                     if (encryption[index] < 123 && encryption[index] > 96)
                         encryption[index] = encryption[index] - 32;         
                     if (encryption[index] > 64 && encryption[index] < 91)
-                    { 
-                        int letterPlace;
-                        letterPlace = 0;
-                        while(encryption[index] != key[letterPlace])
-                            letterPlace++;      
-                        encryption[index] = letterPlace + 65;
-                    }
+                        encryption[index] = key[message[index] - 65];
 
-                }
+            }
             printf("%s\n", encryption);    
+        }
+        case 4:
+        {
+            
         }
     }
 
