@@ -52,6 +52,8 @@ int main()
                 }
                 printf("%s\n", message);
         }
+        case 3:
+        {}
     }
 
     return 0;
