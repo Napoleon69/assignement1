@@ -2,7 +2,7 @@
 int main()
 {
     printf("Enter the number of task to perform:\n1:Encrypt a message with rotational cypher with key.\n2:Decrypt rotational cypher with key.\n3:Encrypt a message with substitution cypher with key.\n4:Decrypt substitution cypher with key.\n");   
-    int option = 1;
+    int option = 3;
     switch (option)
     {
         case 1:
@@ -53,7 +53,30 @@ int main()
                 printf("%s\n", message);
         }
         case 3:
-        {}
+        {
+            char message[] = "BANANABREAD";
+            char key[] = "XTSAUFBJZQLEHGMYCNVPDWORIK";
+            int length = 1;
+            while (message[length])
+                length++;
+            char encryption[length];
+            for(int index = 0; index < length; index++)
+                {
+                    encryption[index] = message[index];
+                    if (encryption[index] < 123 && encryption[index] > 96)
+                        encryption[index] = encryption[index] - 32;         
+                    if (encryption[index] > 64 && encryption[index] < 91)
+                    { 
+                        int letterPlace;
+                        letterPlace = 0;
+                        while(encryption[index] != key[letterPlace])
+                            letterPlace++;      
+                        encryption[index] = letterPlace + 65;
+                    }
+
+                }
+            printf("%s\n", encryption);    
+        }
     }
 
     return 0;
