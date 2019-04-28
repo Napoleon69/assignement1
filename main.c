@@ -31,7 +31,7 @@ int main()
         }
         case 2:
         {
-            char encryption[] = "";
+            char encryption[] = "DBOBEJBO NPPTF";
             int length = 1;
             while (encryption[length])
                 length++;
@@ -95,8 +95,8 @@ int main()
                     message[index] = letterPlace + 65;
                 }   
             }
-        printf("This is the decrypted message: %s\n", message);
-        break;
+            printf("This is the decrypted message: %s\n", message);
+            break;
         }
         case 5:
         {
@@ -104,7 +104,7 @@ int main()
             int length = 1;
             while (encryption[length])
                 length++;
-            //char message[length];
+            char message[length];
             int currentCount = 0;
             int highestCount = 0;
             int letterCounted = 0;
@@ -121,9 +121,22 @@ int main()
                     if (encryption[count] == encryption[index])
                         currentCount++;
                 }
-                
             }
-            printf("%c", letterCounted);
+            int key = letterCounted - 69;
+            if (key > 0)
+                key = key - 26;
+            for (int index = 0; index < length; index++)
+            {
+                message[index] = encryption[index];
+                if (message[index] > 96 && message[index] < 123)
+                    message[index] = message[index] - 32;
+                if (message[index] > 64 && message[index] < 91)
+                {
+                   message[index] = message[index] - 65;
+                   message[index] = (message[index] - key) % 26 + 65;
+                }
+            }
+            printf("This is possibly the decrypted message, if the most common letter is E: %s\n", message);
             break;
         }
         default: printf("Command not recognised.");
