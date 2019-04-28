@@ -1,13 +1,13 @@
 #include <stdio.h>
 int main()
 {
-   printf("Enter the number of task to perform:\n1:Encrypt a message with rotational cypher with key.\n2:Decrypt rotational cypher with key.\n3:Encrypt a message with substitution cypher with key.\n4:Decrypt substitution cypher with key.\n");   
-    int option = 1;
+   printf("Enter the number of task to perform:\n1:Encrypt a message with rotational cypher with key.\n2:Decrypt rotational cypher with key.\n3:Encrypt a message with substitution cypher with key.\n4:Decrypt substitution cypher with key.\n5:Decrypt rotation cypher without key.\n");   
+    int option = 5;
     switch (option)
     {
         case 1:
         {
-           char message[] = "ZEBRA";
+            char message[] = "ZEBRA";
             int length = 1;
             while (message[length])
             length ++;
@@ -31,7 +31,7 @@ int main()
         }
         case 2:
         {
-            char encryption[] = "AFCSB";
+            char encryption[] = "";
             int length = 1;
             while (encryption[length])
                 length++;
@@ -98,8 +98,35 @@ int main()
         printf("This is the decrypted message: %s\n", message);
         break;
         }
-        default: printf("Command not recognised."); 
+        case 5:
+        {
+            char encryption[] = "GEBGOC";            
+            int length = 1;
+            while (encryption[length])
+                length++;
+            //char message[length];
+            int currentCount = 0;
+            int highestCount = 0;
+            int letterCounted = 0;
+            for (int index = 0; index < length; index++)
+            {
+                if (currentCount > highestCount)
+                {    
+                    letterCounted = encryption[index - 1];
+                    highestCount = currentCount;
+                }
+                currentCount = 0;
+                for (int count = 0; count < length; count++)
+                {
+                    if (encryption[count] == encryption[index])
+                        currentCount++;
+                }
+                
+            }
+            printf("%c", letterCounted);
+            break;
+        }
+        default: printf("Command not recognised.");
     }
-
     return 0;
 }
