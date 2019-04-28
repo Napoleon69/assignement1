@@ -1,8 +1,8 @@
 #include <stdio.h>
 int main()
 {
-    printf("Enter the number of task to perform:\n1:Encrypt a message with rotational cypher with key.\n2:Decrypt rotational cypher with key.\n3:Encrypt a message with substitution cypher with key.\n4:Decrypt substitution cypher with key.\n");   
-    int option = 3;
+   printf("Enter the number of task to perform:\n1:Encrypt a message with rotational cypher with key.\n2:Decrypt rotational cypher with key.\n3:Encrypt a message with substitution cypher with key.\n4:Decrypt substitution cypher with key.\n");   
+    int option = 1;
     switch (option)
     {
         case 1:
@@ -26,7 +26,7 @@ int main()
                     encryption[index] = (encryption[index] + key) % 26 + 65;
                 }    
             }
-            printf("%s\n", encryption);
+            printf("This is the encrypted message: %s\n", encryption);
             break;
         }
         case 2:
@@ -50,7 +50,8 @@ int main()
                             message[index] = (message[index] - key) % 26 + 65;
                     }
             }
-                printf("%s\n", message);
+                printf("This is the decrypted message: %s\n", message);
+                break;
         }
         case 3:
         {
@@ -60,7 +61,7 @@ int main()
             while (message[length])
                 length++;
             char encryption[length];
-            for(int index = 0; index < length; index++)
+            for (int index = 0; index < length; index++)
             {
                     encryption[index] = message[index];
                     if (encryption[index] < 123 && encryption[index] > 96)
@@ -69,12 +70,35 @@ int main()
                         encryption[index] = key[message[index] - 65];
 
             }
-            printf("%s\n", encryption);    
+            printf("This is the encrypted message: %s\n", encryption);    
+            break;
         }
         case 4:
         {
-            
+            char encryption[] = "TXGXGXTNUXA";
+            char key[] = "XTSAUFBJZQLEHGMYCNVPDWORIK";
+            int length = 1;
+            while (encryption[length])
+                length++;
+            char message[length];
+            for ( int index = 0; index < length; index++)
+            {
+                message[index] = encryption[index];
+                if (message[index] < 123 && message[index] > 96)
+                    message[index] = message[index] - 32;         
+                if (message[index] > 64 && message[index] < 91)
+                {
+                    int letterPlace;
+                    letterPlace = 0;
+                    while (encryption[index] != key[letterPlace])
+                        letterPlace++;
+                    message[index] = letterPlace + 65;
+                }   
+            }
+        printf("This is the decrypted message: %s\n", message);
+        break;
         }
+        default: printf("Command not recognised."); 
     }
 
     return 0;
