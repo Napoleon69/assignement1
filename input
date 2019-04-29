@@ -1,0 +1,7 @@
+Enter the number of task to perform:
+1:Encrypt a message with rotational cipher with key.
+2:Decrypt rotational cipher with key.
+3:Encrypt a message with substitution cipher with key.
+4:Decrypt substitution cipher with key.
+5:Decrypt rotation cipher without key.
+Command not recognised.

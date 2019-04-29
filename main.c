@@ -1,4 +1,4 @@
-
+ 
 //This program can encrypt a message using rotational or substitution cipers as long as it is given a key and message. 
 //It can decrypt a rotational or substitution cipher when it is provided the key used to encrypt them in the first place. 
 //A rotational cipher can also be decrypted without a key if provided user input. 
